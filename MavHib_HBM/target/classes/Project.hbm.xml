@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="Entity.Project" table="projects" 	catalog="stud_proj">
+
+		<id name="projectId" type="java.lang.Integer">
+			<column name="PROJECT_ID" />
+			 <generator class="identity" />
+		</id>
+
+		<property name="title" type="string">
+			<column name="TITLE" length="100" not-null="true" unique = "true" />
+		</property>
+
+		<property name="semester" type="string">
+			<column name="SEMESTER" length="100"  />
+		</property>
+
+		<many-to-one name="student" class="Entity.Student" fetch="select">
+                    <column name="STUDENT_ID" not-null="true" />
+                </many-to-one>
+	</class>
+
+
+</hibernate-mapping>
